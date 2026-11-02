@@ -9,6 +9,9 @@ on:
     paths: ['games/**', 'core/**']
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 concurrency:
   group: screenshots-${{ github.ref }}
   cancel-in-progress: true
@@ -54,3 +57,26 @@ jobs:
           name: screenshots
           path: screenshots/*.png
           if-no-files-found: warn
+
+      - name: Publish screenshots to the 'screenshots' branch
+        if: always()
+        run: |
+          shopt -s nullglob
+          files=(screenshots/*.png)
+          if (( ${#files[@]} == 0 )); then echo "No screenshots to publish"; exit 0; fi
+          dir=$(mktemp -d)
+          cp screenshots/*.png "$dir/"
+          {
+            echo "# Screenshots"
+            echo
+            echo "From commit ${GITHUB_SHA::7}, captured on an Android 14 emulator (Pixel 6)."
+            echo
+            for f in "$dir"/*.png; do n=$(basename "$f"); echo "### ${n%.png}"; echo; echo "<img src=\"$n\" width=\"300\">"; echo; done
+          } > "$dir/README.md"
+          cd "$dir"
+          git init -q -b screenshots
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "Screenshots for ${GITHUB_SHA::7}"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" screenshots
