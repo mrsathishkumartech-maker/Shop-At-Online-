@@ -6,6 +6,7 @@ name, its own APK and its own release, and all of them share common code from `c
 | Game | Folder | Package | Status |
 | --- | --- | --- | --- |
 | Arrow Escape | `games/arrowescape` | `com.sathishkumar.games.arrowescape` | Playable, levels 1–∞ |
+| Kirana Sort | `games/kiranasort` | `com.sathishkumar.games.kiranasort` | Playable, levels 1–∞ |
 
 ## Layout
 
@@ -17,6 +18,7 @@ scripts/new-game.sh       creates games/<game-id> from the template
 .github/workflows/
   build.yml               every push/PR: unit tests + debug APK for every game
   release.yml             tag <game-id>-v1.2.3: signed APK + AAB for that one game
+  screenshots.yml         runs every game in an Android emulator and saves screenshots
 ```
 
 ## Build locally
@@ -118,3 +120,19 @@ Clear the board.
   generator places arrows one at a time, each with a clear path to an exit it's allowed to
   use at that moment. Removing them in reverse order always works, so every level can be
   solved. Unit tests check levels 1–100.
+
+## Kirana Sort
+
+Shelves full of mixed shop items: chai, mangoes, laddoos, bangles, samosas, jalebi and more.
+Drag an item onto another shelf, and three of the same on one shelf clear. When a shelf's
+front row is empty, the row hidden behind it comes forward. Clear every shelf before the
+timer runs out.
+
+- **Coins and shop:** each level pays coins (more for time left). Spend them to grow from a
+  **Street stall** to a **Kirana shop**, **General store**, **Mini mart** and finally a
+  **Supermarket**. Each upgrade raises the coins you earn per level.
+- **Rewarded ads:** **+Shelf** (an extra empty shelf), **Shuffle** and **+30s**. They're also
+  offered when the shelves are full or time runs out.
+- **Levels** are built backwards from an empty shop: un-clear a triple, then un-move items
+  around. Playing those steps forwards clears the board, so every level can be solved.
+  Unit tests replay the solution for levels 1–150.

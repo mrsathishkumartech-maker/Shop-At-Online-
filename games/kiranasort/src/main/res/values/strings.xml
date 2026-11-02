@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kirana Sort</string>
+    <string name="level_n">Level %1$d</string>
+    <string name="timer">%1$d:%2$02d</string>
+    <string name="coins_n">🪙 %1$d</string>
+    <string name="extra_shelf">+Shelf ▶</string>
+    <string name="shuffle">Shuffle ▶</string>
+    <string name="extra_time">+30s ▶</string>
+    <string name="restart">Restart</string>
+    <string name="shop">Shop</string>
+    <string name="ad_unavailable">No ad available right now. Try again in a moment.</string>
+    <string name="level_cleared">Level %1$d cleared!</string>
+    <string name="coins_earned">You earned %1$d coins for your %2$s.</string>
+    <string name="next_level">Next level</string>
+    <string name="time_up">Time\'s up!</string>
+    <string name="time_up_message">Watch an ad for 30 more seconds, or start the level again.</string>
+    <string name="extra_time_ad">+30 seconds ▶</string>
+    <string name="stuck">Shelves are full</string>
+    <string name="stuck_message">No moves left. Watch an ad for an extra shelf or a shuffle, or start again.</string>
+    <string name="extra_shelf_ad">Extra shelf ▶</string>
+    <string name="shuffle_ad">Shuffle ▶</string>
+    <string name="retry">Retry</string>
+    <string name="back">Back</string>
+    <string name="coin_bonus">+%1$d%% coins every level</string>
+    <string name="upgrade_to">Upgrade to %1$s (🪙 %2$d)</string>
+    <string name="shop_maxed">Your supermarket is complete!</string>
+</resources>

@@ -32,6 +32,13 @@ class GamePrefs(context: Context, gameId: String) {
         .filter { stars(it) > 0 }
         .sorted()
 
+    /** Any other whole number a game wants to keep, such as coins. */
+    fun getInt(key: String, default: Int = 0): Int = prefs.getInt("int_$key", default)
+
+    fun putInt(key: String, value: Int) {
+        prefs.edit().putInt("int_$key", value).apply()
+    }
+
     private companion object {
         const val KEY_CURRENT_LEVEL = "current_level"
         const val KEY_STARS = "stars_"
