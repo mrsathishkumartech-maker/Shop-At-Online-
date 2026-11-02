@@ -1,0 +1,115 @@
+name: Release game
+
+# Release ONE game by pushing a tag named <game-id>-v<major>.<minor>.<patch>:
+#   git tag arrowescape-v1.0.0 && git push origin arrowescape-v1.0.0
+# or run this workflow by hand from the Actions tab.
+
+on:
+  push:
+    tags: ['*-v*.*.*']
+  workflow_dispatch:
+    inputs:
+      game:
+        description: Game id (folder name under games/), e.g. arrowescape
+        required: true
+      version:
+        description: Version, e.g. 1.0.0
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Work out game and version
+        id: meta
+        env:
+          INPUT_GAME: ${{ inputs.game }}
+          INPUT_VERSION: ${{ inputs.version }}
+        run: |
+          if [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then
+            game="$INPUT_GAME"
+            version="$INPUT_VERSION"
+          else
+            tag="$GITHUB_REF_NAME"
+            game="${tag%-v*}"
+            version="${tag##*-v}"
+          fi
+          if [[ ! "$game" =~ ^[a-z][a-z0-9]*$ ]] || [[ ! -f "games/$game/build.gradle.kts" ]]; then
+            echo "::error::No game called '$game' under games/"
+            exit 1
+          fi
+          if [[ ! "$version" =~ ^([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then
+            echo "::error::Version '$version' must look like 1.2.3"
+            exit 1
+          fi
+          major=${BASH_REMATCH[1]}; minor=${BASH_REMATCH[2]}; patch=${BASH_REMATCH[3]}
+          if (( minor > 99 || patch > 99 )); then
+            echo "::error::minor and patch must be 0-99 so versionCode keeps increasing"
+            exit 1
+          fi
+          code=$(( major * 10000 + minor * 100 + patch ))
+          {
+            echo "game=$game"
+            echo "version=$version"
+            echo "code=$code"
+            echo "tag=$game-v$version"
+          } >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Decode release keystore
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: |
+          if [[ -n "$KEYSTORE_BASE64" ]]; then
+            echo "$KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/release.jks"
+            echo "ANDROID_KEYSTORE_PATH=$RUNNER_TEMP/release.jks" >> "$GITHUB_ENV"
+          else
+            echo "::warning::ANDROID_KEYSTORE_BASE64 secret not set: APK is signed with a throwaway debug key (fine for testing, NOT for the Play Store)."
+          fi
+
+      - name: Test and build release APK + AAB
+        env:
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+          GAME: ${{ steps.meta.outputs.game }}
+        run: >
+          ./gradlew
+          :games:$GAME:testReleaseUnitTest
+          :games:$GAME:assembleRelease
+          :games:$GAME:bundleRelease
+          -PappVersionName=${{ steps.meta.outputs.version }}
+          -PappVersionCode=${{ steps.meta.outputs.code }}
+
+      - name: Collect files
+        env:
+          GAME: ${{ steps.meta.outputs.game }}
+          VERSION: ${{ steps.meta.outputs.version }}
+        run: |
+          mkdir -p dist
+          cp games/$GAME/build/outputs/apk/release/*-release.apk "dist/$GAME-$VERSION.apk"
+          cp games/$GAME/build/outputs/bundle/release/*-release.aab "dist/$GAME-$VERSION.aab"
+          ls -l dist
+
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.meta.outputs.tag }}
+          GAME: ${{ steps.meta.outputs.game }}
+          VERSION: ${{ steps.meta.outputs.version }}
+        run: |
+          gh release create "$TAG" dist/* \
+            --target "$GITHUB_SHA" \
+            --title "$GAME $VERSION" \
+            --notes "Release of **$GAME** version $VERSION. Install \`$GAME-$VERSION.apk\` on a phone; upload the \`.aab\` to Google Play."

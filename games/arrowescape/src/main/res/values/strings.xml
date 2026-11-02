@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Arrow Escape</string>
+    <string name="level_n">Level %1$d</string>
+    <string name="hint">Hint ▶</string>
+    <string name="undo">Undo ▶</string>
+    <string name="skip">Skip ▶</string>
+    <string name="restart">Restart</string>
+    <string name="book">Rangoli book</string>
+    <string name="ad_unavailable">No ad available right now. Try again in a moment.</string>
+    <string name="skip_title">Skip this level?</string>
+    <string name="skip_message">Watch a short ad to skip. Skipped levels don\'t add a rangoli to your book.</string>
+    <string name="watch_ad">Watch ad</string>
+    <string name="level_cleared">Level %1$d cleared!</string>
+    <string name="rangoli_added">New rangoli added to your book</string>
+    <string name="next_level">Next level</string>
+    <string name="out_of_lives">Out of lives</string>
+    <string name="out_of_lives_message">Watch an ad to take back your last mistake, or start the level again.</string>
+    <string name="undo_mistake">Undo mistake ▶</string>
+    <string name="retry">Retry</string>
+    <string name="back">Back</string>
+    <string name="collection_title">Rangoli book</string>
+    <string name="collection_empty">Clear a level to collect its rangoli.</string>
+    <plurals name="rangolis_collected">
+        <item quantity="one">%1$d rangoli collected</item>
+        <item quantity="other">%1$d rangolis collected</item>
+    </plurals>
+</resources>

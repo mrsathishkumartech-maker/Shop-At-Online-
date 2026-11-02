@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Three arrow tiles, the top-right one escaping. 108dp canvas, safe zone is the middle 66dp. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path android:fillColor="#4B5D8C" android:pathData="M30,56 h20 a4,4 0 0 1 4,4 v20 a4,4 0 0 1 -4,4 h-20 a4,4 0 0 1 -4,-4 v-20 a4,4 0 0 1 4,-4 z" />
+    <path android:fillColor="#E5484D" android:pathData="M58,56 h20 a4,4 0 0 1 4,4 v20 a4,4 0 0 1 -4,4 h-20 a4,4 0 0 1 -4,-4 v-20 a4,4 0 0 1 4,-4 z" />
+    <path android:fillColor="#F5B700" android:pathData="M30,28 h20 a4,4 0 0 1 4,4 v20 a4,4 0 0 1 -4,4 h-20 a4,4 0 0 1 -4,-4 v-20 a4,4 0 0 1 4,-4 z" />
+    <path android:fillColor="#3E8EF7" android:pathData="M62,24 h20 a4,4 0 0 1 4,4 v20 a4,4 0 0 1 -4,4 h-20 a4,4 0 0 1 -4,-4 v-20 a4,4 0 0 1 4,-4 z" />
+    <path android:strokeColor="#FFFFFF" android:strokeWidth="3.5" android:strokeLineCap="round" android:strokeLineJoin="round"
+        android:pathData="M40,78 V62 M34.5,67.5 L40,62 L45.5,67.5" />
+    <path android:strokeColor="#FFFFFF" android:strokeWidth="3.5" android:strokeLineCap="round" android:strokeLineJoin="round"
+        android:pathData="M60,70 H76 M70.5,64.5 L76,70 L70.5,75.5" />
+    <path android:strokeColor="#FFFFFF" android:strokeWidth="3.5" android:strokeLineCap="round" android:strokeLineJoin="round"
+        android:pathData="M48,42 H32 M37.5,36.5 L32,42 L37.5,47.5" />
+    <path android:strokeColor="#FFFFFF" android:strokeWidth="3.5" android:strokeLineCap="round" android:strokeLineJoin="round"
+        android:pathData="M64,38 H80 M74.5,32.5 L80,38 L74.5,43.5" />
+</vector>
