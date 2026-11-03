@@ -31,25 +31,35 @@ wait_for_text() {
   return 1
 }
 
-# Taps the on-screen element whose text is exactly "$1" (found via a UI dump).
-tap_text() {
+# Taps the first on-screen element whose attribute $1 matches $2 (found via a UI dump).
+#   attr "text": the text must match exactly; attr "resource-id": the id must end in ":id/$2".
+tap_attr() {
   adb shell uiautomator dump /sdcard/ui.xml > /dev/null
   local xy
   xy=$(adb exec-out cat /sdcard/ui.xml | python3 -c '
 import re, sys
-xml, want = sys.stdin.read(), sys.argv[1]
+xml, attr, want = sys.stdin.read(), sys.argv[1], sys.argv[2]
 for m in re.finditer(r"<node [^>]*>", xml):
     node = m.group(0)
-    t = re.search(r"text=\"([^\"]*)\"", node)
+    v = re.search(attr + r"=\"([^\"]*)\"", node)
     b = re.search(r"bounds=\"\[(\d+),(\d+)\]\[(\d+),(\d+)\]\"", node)
-    if t and b and t.group(1) == want:
+    if not (v and b):
+        continue
+    value = v.group(1)
+    if (attr == "resource-id" and value.endswith(":id/" + want)) or (attr != "resource-id" and value == want):
         x1, y1, x2, y2 = map(int, b.groups())
         print((x1 + x2) // 2, (y1 + y2) // 2)
         break
-' "$1")
-  if [[ -z "$xy" ]]; then echo "tap_text: '$1' not on screen"; return 1; fi
+' "$1" "$2")
+  if [[ -z "$xy" ]]; then echo "tap_attr: no $1 '$2' on screen"; return 1; fi
   adb shell input tap $xy
 }
+
+# Taps the element whose text is exactly "$1".
+tap_text() { tap_attr text "$1"; }
+
+# Taps the view with resource id "$1" (e.g. recruit_button).
+tap_id() { tap_attr resource-id "$1"; }
 
 # Replaces the game's saved preferences with a prepared file.
 set_prefs() {

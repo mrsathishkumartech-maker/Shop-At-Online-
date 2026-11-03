@@ -9,6 +9,7 @@ name, its own APK and its own release, and all of them share common code from `c
 | Kirana Sort | `games/kiranasort` | `com.sathishkumar.games.kiranasort` | Playable, levels 1–∞ |
 | Chai Stall Tycoon | `games/chaistall` | `com.sathishkumar.games.chaistall` | Playable idle game |
 | Super Over Cricket | `games/superover` | `com.sathishkumar.games.superover` | Playable, 4 tournaments |
+| Kingdom Guard | `games/kingdomguard` | `com.sathishkumar.games.kingdomguard` | Playable, endless waves |
 
 ## Layout
 
@@ -180,3 +181,32 @@ shows how early or late each swing was.
 - **Ads:** a rewarded **free hit**. If you're out, the umpire calls a no-ball: the wicket is
   cancelled, you get 1 run, and the ball is bowled again as a free hit (once per match). There's
   also an **interstitial between matches**, starting from the 3rd match you finish.
+
+## Kingdom Guard
+
+Merge defense. Buy recruits onto stone pads beside the road, and drag a soldier onto an
+identical one to merge them into the next rank: Recruit → Militia → Spearman → Archer →
+Knight → Captain → Paladin → Champion. Each rank has its own damage, range and attack speed.
+Goblins, orcs and trolls march from the cave to your castle, with a Warlord every 10th wave.
+Soldiers fight on their own.
+
+It's built to practise what a bigger strategy game needs:
+
+- **Pathfinding:** maps are drawn as text (`#` rock, `.` road, `P` pad, `S` spawn, `C` castle),
+  and a breadth-first search works out the enemies' route. Change the map and the route changes
+  with it. Green Valley (waves 1–10) and Hill Fort (11–20) alternate.
+- **Target finding:** each soldier attacks the enemy in range that's furthest along the road.
+- **Troop stats and waves:** see `Rank`, `EnemyKind` and `Waves` in `logic/Units.kt`. Enemies get
+  13% tougher each wave.
+- **Upgrades:** the forge raises every soldier's damage (+15% a level) and attack speed (−8%
+  cooldown a level).
+- **Tests:**
+  - every map has a route, and every pad is within a recruit's reach of it
+  - the BFS returns shortest paths
+  - merging and targeting rules hold
+  - a simulated player who buys, merges and forges greedily survives wave 12 or later (it
+    currently falls on wave 20) but not forever
+
+**Ads** (your plan didn't list any for this game, so these are a suggestion): a rewarded
+**Rebuild walls** (revive the castle with half its lives, once per run) and an interstitial
+after a run ends, from the 3rd run on.

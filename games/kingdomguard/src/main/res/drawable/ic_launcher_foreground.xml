@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A castle with a red flag. 108dp canvas, safe zone is the middle 66dp. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path android:fillColor="#ADB5BD" android:pathData="M30,50 h8 v-6 h6 v6 h6 v-6 h6 v6 h6 v-6 h6 v6 h4 v30 h-48 z" />
+    <path android:fillColor="#CED4DA" android:pathData="M28,44 h12 v36 h-12 z M68,44 h12 v36 h-12 z" />
+    <path android:fillColor="#495057" android:pathData="M48,80 v-12 a6,6 0 0 1 12,0 v12 z" />
+    <path android:fillColor="#6C757D" android:pathData="M53,30 h2 v14 h-2 z" />
+    <path android:fillColor="#E63946" android:pathData="M55,30 h12 l-3,4 l3,4 h-12 z" />
+</vector>

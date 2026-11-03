@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#1F2A1F</color>
+    <color name="button">#3A5A40</color>
+    <color name="button_pressed">#588157</color>
+    <color name="button_disabled">#2A3A2B</color>
+    <color name="primary_button">#E9C46A</color>
+    <color name="primary_button_pressed">#F4A261</color>
+    <color name="text">#FFFFFF</color>
+    <color name="text_muted">#A3B18A</color>
+    <color name="text_dark">#1D1D1D</color>
+    <color name="accent">#FFD60A</color>
+    <color name="lives">#FF8FA3</color>
+</resources>
