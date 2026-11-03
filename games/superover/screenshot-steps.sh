@@ -1,11 +1,10 @@
 # Sourced by scripts/screenshots.sh with $pkg and $game set.
-# Mid-career home screen, then a live ball, then the result of not swinging.
+# Mid-career home screen, then a burst of captures through the first ball.
 set_prefs "$pkg" "$game" "games/$game/screenshot-career.xml"
 shot "$pkg" "$game-home"
 tap_text "Play match" || true
-# The first ball is bowled 1.1s after the match screen opens and takes about a second.
-wait_for_text "Tap anywhere when the ball reaches the bat" || true
-sleep 1.5
-capture "$game-ball"
-sleep 2
-capture "$game-result"
+# The emulator's launch time varies, so grab several frames; one lands mid-delivery.
+for i in 1 2 3 4 5 6 7 8; do
+  capture "$game-ball-$i"
+  sleep 0.2
+done
