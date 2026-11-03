@@ -39,6 +39,13 @@ class GamePrefs(context: Context, gameId: String) {
         prefs.edit().putInt("int_$key", value).apply()
     }
 
+    /** Free-form text, e.g. a game's whole saved state. */
+    fun getString(key: String): String? = prefs.getString("str_$key", null)
+
+    fun putString(key: String, value: String) {
+        prefs.edit().putString("str_$key", value).apply()
+    }
+
     private companion object {
         const val KEY_CURRENT_LEVEL = "current_level"
         const val KEY_STARS = "stars_"

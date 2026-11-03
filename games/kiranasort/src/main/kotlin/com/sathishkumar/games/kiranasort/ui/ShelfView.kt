@@ -199,11 +199,12 @@ class ShelfView @JvmOverloads constructor(
             rect.set(r.left, r.bottom - slotSize * 0.08f, r.right, r.bottom)
             canvas.drawRect(rect, woodEdge)
 
-            // Peek at the next hidden row, faded and raised.
+            // Preview of the next hidden row: small, faded, in a strip above the front row
+            // so it never overlaps the items the player can actually move.
             shelf.layers.firstOrNull()?.forEachIndexed { slot, item ->
                 if (item != null) {
-                    val (cx, cy) = slotCenter(SlotRef(i, slot))
-                    painter.draw(canvas, item, cx, cy - slotSize * 0.18f, slotSize * 0.55f, alpha = 70)
+                    val (cx, _) = slotCenter(SlotRef(i, slot))
+                    painter.draw(canvas, item, cx, r.top + slotSize * 0.17f, slotSize * 0.26f, alpha = 120)
                 }
             }
 

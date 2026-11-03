@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#FFF4E0</color>
+    <color name="card">#FFFFFF</color>
+    <color name="header">#7A3E12</color>
+    <color name="button">#C2410C</color>
+    <color name="button_pressed">#9A3412</color>
+    <color name="button_disabled">#D6C7B5</color>
+    <color name="accent">#F5B700</color>
+    <color name="ad">#2B8A3E</color>
+    <color name="text">#2D1B0E</color>
+    <color name="text_muted">#7C6650</color>
+    <color name="text_on_button">#FFFFFF</color>
+    <color name="tab">#EAD9C2</color>
+    <color name="tab_selected">#7A3E12</color>
+</resources>

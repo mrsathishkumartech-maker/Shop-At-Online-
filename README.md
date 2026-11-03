@@ -7,6 +7,7 @@ name, its own APK and its own release, and all of them share common code from `c
 | --- | --- | --- | --- |
 | Arrow Escape | `games/arrowescape` | `com.sathishkumar.games.arrowescape` | Playable, levels 1–∞ |
 | Kirana Sort | `games/kiranasort` | `com.sathishkumar.games.kiranasort` | Playable, levels 1–∞ |
+| Chai Stall Tycoon | `games/chaistall` | `com.sathishkumar.games.chaistall` | Playable idle game |
 
 ## Layout
 
@@ -19,6 +20,8 @@ scripts/new-game.sh       creates games/<game-id> from the template
   build.yml               every push/PR: unit tests + debug APK for every game
   release.yml             tag <game-id>-v1.2.3: signed APK + AAB for that one game
   screenshots.yml         runs every game in an Android emulator and saves screenshots
+                          (to the `screenshots` branch); games without levels put prepared
+                          saves in games/<game-id>/screenshot-states/
 ```
 
 ## Build locally
@@ -136,3 +139,20 @@ timer runs out.
 - **Levels** are built backwards from an empty shop: un-clear a triple, then un-move items
   around. Playing those steps forwards clears the board, so every level can be solved.
   Unit tests replay the solution for levels 1–150.
+
+## Chai Stall Tycoon
+
+An idle business game. Start with one roadside chai stall, add samosa, vada and bun maska,
+hire helpers, then open branches in **Chennai**, **Mumbai** and **Delhi**. Money keeps coming
+in on its own, and tapping the stall serves a customer for a quick bonus.
+
+- **Upgrades:** each one costs 15% more than the last, and a product's sales double every 25 levels.
+- **Helpers** (up to 3 per location): +50% sales each. Locations with a helper keep earning
+  while the app is closed, at half speed for up to 8 hours.
+- **Branches:** each city sells at 5×, 25× and 125× roadside prices. Costs grow faster than
+  income, so each city is a real goal. A simulated player who never taps reaches Chennai in
+  about 20 minutes of earning, Mumbai in about 3 hours and Delhi in about 4 days. A unit test
+  keeps that pacing.
+- **Money** is shown the Indian way: ₹99,999 → ₹1.5 L → ₹3.4 Cr.
+- **Rewarded ads:** **2× profits for 4 hours** (stacks up to 8 hours), **double the money earned
+  while away**, and **Free ▶** instant upgrades (once every 5 minutes).

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Chai Stall Tycoon</string>
+    <string name="ad_unavailable">No ad available right now. Try again in a moment.</string>
+    <string name="boost">2× profits for 4 hours ▶</string>
+    <string name="boost_active">2× profits: %1$s left · add 4h ▶</string>
+    <string name="locked_tab">🔒 %1$s</string>
+    <string name="open_branch_text">Open a branch in %1$s. Everything sells for %2$d× the roadside price.</string>
+    <string name="open_for">Open for %1$s</string>
+    <string name="not_sold_yet">Not on the menu yet</string>
+    <string name="product_detail">Level %1$d · %2$s</string>
+    <string name="unlock_for">Add · %1$s</string>
+    <string name="upgrade_for">Upgrade · %1$s</string>
+    <string name="free">Free ▶</string>
+    <string name="helpers">Helpers</string>
+    <string name="helper_detail">%1$d of %2$d hired · +50%% sales each, and they keep the stall open while you\'re away</string>
+    <string name="hire_for">Hire · %1$s</string>
+    <string name="helpers_full">Fully staffed</string>
+    <string name="tap_to_serve">Tap the stall to serve customers</string>
+    <string name="welcome_back">Welcome back!</string>
+    <string name="offline_message">Your helpers kept selling for %1$s and earned %2$s. It\'s already in your till.</string>
+    <string name="collect">OK</string>
+    <string name="collect_double">Double to %1$s ▶</string>
+</resources>

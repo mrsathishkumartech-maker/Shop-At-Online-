@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="36dp"
+    android:layout_marginHorizontal="4dp"
+    android:background="@drawable/bg_tab"
+    android:minWidth="0dp"
+    android:minHeight="0dp"
+    android:paddingHorizontal="14dp"
+    android:stateListAnimator="@null"
+    android:textAllCaps="false"
+    android:textColor="@color/tab_text"
+    android:textSize="14sp" />

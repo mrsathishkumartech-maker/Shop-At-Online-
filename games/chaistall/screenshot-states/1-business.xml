@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <string name="str_state">v=1
+cash=452300.0
+lifetime=3100000.0
+boostUntil=0
+freeUpgradeAt=0
+lastSeen=0
+loc.ROADSIDE=true,2,31,22,12,3
+loc.CHENNAI=false,0,0,0,0,0
+loc.MUMBAI=false,0,0,0,0,0
+loc.DELHI=false,0,0,0,0,0
+</string>
+</map>
