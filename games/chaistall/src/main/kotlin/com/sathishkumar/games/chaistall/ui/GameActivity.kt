@@ -227,7 +227,7 @@ class GameActivity : Activity() {
             it.text = getString(R.string.open_for, Money.format(loc.unlockCost))
             it.isEnabled = state.canOpen(loc)
         }
-        val freeReady = state.isFreeUpgradeReady(now)
+        val freeTarget = state.freeUpgradeTarget(loc, now)
         for (row in productRows) {
             val level = here.level(row.product)
             val income = Economy.productIncome(loc, row.product, level)
@@ -239,7 +239,7 @@ class GameActivity : Activity() {
             val cost = state.upgradeCost(loc, row.product)
             row.buy.text = getString(if (level == 0) R.string.unlock_for else R.string.upgrade_for, Money.format(cost))
             row.buy.isEnabled = state.canUpgrade(loc, row.product)
-            row.free.visibility = if (!row.buy.isEnabled && freeReady) View.VISIBLE else View.GONE
+            row.free.visibility = if (row.product == freeTarget) View.VISIBLE else View.GONE
         }
         helperDetail?.text = getString(R.string.helper_detail, here.helpers, Economy.MAX_HELPERS)
         helperButton?.let { b ->

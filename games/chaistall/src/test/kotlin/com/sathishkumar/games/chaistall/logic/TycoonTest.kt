@@ -69,12 +69,19 @@ class TycoonTest {
     }
 
     @Test
-    fun freeUpgradeHasACooldown() {
+    fun freeUpgradeOnlyForOwnedProducts_cheapestUnaffordable_withCooldown() {
         val s = TycoonState.newGame()
-        assertTrue(s.freeUpgrade(Location.ROADSIDE, Product.VADA, 0))
-        assertFalse(s.freeUpgrade(Location.ROADSIDE, Product.VADA, 1000))
-        assertTrue(s.freeUpgrade(Location.ROADSIDE, Product.VADA, Economy.FREE_UPGRADE_COOLDOWN_MS))
-        assertEquals(2, s.at(Location.ROADSIDE).level(Product.VADA))
+        // A new player only sells chai, so chai is the only free upgrade on offer.
+        assertEquals(Product.CHAI, s.freeUpgradeTarget(Location.ROADSIDE, 0))
+        assertFalse(s.freeUpgrade(Location.ROADSIDE, Product.VADA, 0))
+        assertTrue(s.freeUpgrade(Location.ROADSIDE, Product.CHAI, 0))
+        assertEquals(2, s.at(Location.ROADSIDE).level(Product.CHAI))
+        // Cooldown.
+        assertEquals(null, s.freeUpgradeTarget(Location.ROADSIDE, 1000))
+        assertFalse(s.freeUpgrade(Location.ROADSIDE, Product.CHAI, 1000))
+        // Nothing offered for things the player can already afford.
+        s.earn(1e6)
+        assertEquals(null, s.freeUpgradeTarget(Location.ROADSIDE, Economy.FREE_UPGRADE_COOLDOWN_MS))
     }
 
     @Test

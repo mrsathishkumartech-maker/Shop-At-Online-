@@ -86,9 +86,21 @@ class TycoonState(
 
     fun isFreeUpgradeReady(nowMs: Long): Boolean = nowMs >= freeUpgradeReadyAtMs
 
-    /** Rewarded-ad upgrade: no cost, then a cooldown. */
+    /**
+     * The one product a rewarded ad can upgrade for free right now: the cheapest upgrade the
+     * player can't yet afford, among products already on the menu. New products are never
+     * free, so an ad can't skip the early game.
+     */
+    fun freeUpgradeTarget(location: Location, nowMs: Long): Product? {
+        if (!at(location).unlocked || !isFreeUpgradeReady(nowMs)) return null
+        return Product.entries
+            .filter { at(location).level(it) > 0 && !canUpgrade(location, it) }
+            .minByOrNull { upgradeCost(location, it) }
+    }
+
+    /** Rewarded-ad upgrade of [freeUpgradeTarget]: no cost, then a cooldown. */
     fun freeUpgrade(location: Location, product: Product, nowMs: Long): Boolean {
-        if (!at(location).unlocked || !isFreeUpgradeReady(nowMs)) return false
+        if (freeUpgradeTarget(location, nowMs) != product) return false
         at(location).levels[product.ordinal]++
         freeUpgradeReadyAtMs = nowMs + Economy.FREE_UPGRADE_COOLDOWN_MS
         return true
