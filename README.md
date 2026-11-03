@@ -8,6 +8,7 @@ name, its own APK and its own release, and all of them share common code from `c
 | Arrow Escape | `games/arrowescape` | `com.sathishkumar.games.arrowescape` | Playable, levels 1–∞ |
 | Kirana Sort | `games/kiranasort` | `com.sathishkumar.games.kiranasort` | Playable, levels 1–∞ |
 | Chai Stall Tycoon | `games/chaistall` | `com.sathishkumar.games.chaistall` | Playable idle game |
+| Super Over Cricket | `games/superover` | `com.sathishkumar.games.superover` | Playable, 4 tournaments |
 
 ## Layout
 
@@ -21,7 +22,8 @@ scripts/new-game.sh       creates games/<game-id> from the template
   release.yml             tag <game-id>-v1.2.3: signed APK + AAB for that one game
   screenshots.yml         runs every game in an Android emulator and saves screenshots
                           (to the `screenshots` branch); games without levels put prepared
-                          saves in games/<game-id>/screenshot-states/
+                          saves in games/<game-id>/screenshot-states/, and games with
+                          several screens script their own steps in screenshot-steps.sh
 ```
 
 ## Build locally
@@ -156,3 +158,25 @@ in on its own, and tapping the stall serves a customer for a quick bonus.
 - **Money** is shown the Indian way: ₹99,999 → ₹1.5 L → ₹3.4 Cr.
 - **Rewarded ads:** **2× profits for 4 hours** (stacks up to 8 hours), **double the money earned
   while away**, and **Free ▶** instant upgrades (once every 5 minutes).
+
+## Super Over Cricket
+
+One-tap batting. Each ball comes in at its own speed and type: straight, outswinger, slower
+ball, yorker or bouncer. Tap when it reaches the bat. Your timing decides the shot: perfect
+for a six, good for a four (sometimes a six, with a strong bat), OK for 1–2 runs, an edge
+(which might be caught), or a miss. Miss a ball on the stumps and you're bowled. A timing bar
+shows how early or late each swing was.
+
+- **Matches:** chase a target in one over with 2 wickets.
+- **Tournaments:** Gully Cup → City League → National Trophy → World Super Over Cup. Bowlers get
+  faster and add yorkers and bouncers as you go. Winning the World Cup starts it again with
+  higher targets.
+- **Bats:** runs earn coins (+20 for a win, plus a prize for each tournament). Better bats widen
+  the timing window and turn more fours into sixes.
+- **Difficulty**, from a simulation of 400 runs per match: a steady player (taps within about
+  ±60 ms) wins about 65% of World Cup matches with the starting bat and 91% with the English
+  willow. A more casual player (±100 ms) wins 78% in the Gully Cup but only 21% at the World Cup.
+  A unit test checks that each tournament is harder than the last and that better bats help.
+- **Ads:** a rewarded **free hit**. If you're out, the umpire calls a no-ball: the wicket is
+  cancelled, you get 1 run, and the ball is bowled again as a free hit (once per match). There's
+  also an **interstitial between matches**, starting from the 3rd match you finish.

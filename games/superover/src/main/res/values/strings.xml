@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Super Over Cricket</string>
+    <string name="tagline">One over. One tap a ball. Chase it down.</string>
+    <string name="match_of">Match %1$d of %2$d</string>
+    <string name="target_off_six">Target: %1$d off 6 balls</string>
+    <string name="bat_line">Bat: %1$s</string>
+    <string name="coins_n">🪙 %1$d</string>
+    <string name="titles_n">🏆 World Super Over Cup × %1$d</string>
+    <string name="play">Play match</string>
+    <string name="bats">Bats</string>
+    <string name="match_title">%1$s · Match %2$d/%3$d</string>
+    <string name="need_from">Need %1$d from %2$d · %3$d wkts left</string>
+    <string name="won_short">Target chased!</string>
+    <string name="lost_short">Innings over</string>
+    <string name="tap_hint">Tap anywhere when the ball reaches the bat</string>
+    <string name="ad_unavailable">No ad available right now. Try again in a moment.</string>
+    <string name="free_hit_title">Out! Second chance?</string>
+    <string name="free_hit_message">Watch an ad and the umpire calls it a no-ball: the wicket is cancelled, you get 1 run, and the ball is bowled again as a free hit. Once per match.</string>
+    <string name="free_hit_ad">Free hit ▶</string>
+    <string name="no_thanks">No thanks</string>
+    <string name="won_title">You won! 🏏</string>
+    <string name="lost_title">So close!</string>
+    <string name="won_message">You scored %1$d, chasing %2$d.</string>
+    <string name="lost_message">You scored %1$d, chasing %2$d.</string>
+    <string name="coins_earned">+%1$d coins</string>
+    <string name="champion">🏆 %1$s champions! +%2$d bonus coins</string>
+    <string name="next_match">Next match</string>
+    <string name="try_again">Try again</string>
+    <string name="home">Home</string>
+    <string name="back">Back</string>
+    <string name="bats_title">Bats</string>
+    <string name="bat_stats">Timing +%1$d%% · Power %2$d%%</string>
+    <string name="equipped">Equipped</string>
+    <string name="equip">Equip</string>
+    <string name="buy_for">Buy · 🪙 %1$d</string>
+</resources>
