@@ -55,7 +55,10 @@ class MatchActivity : Activity() {
         equation.text = when (match.status) {
             MatchStatus.WON -> getString(R.string.won_short)
             MatchStatus.LOST -> getString(R.string.lost_short)
-            MatchStatus.IN_PROGRESS -> getString(R.string.need_from, match.runsNeeded, match.ballsLeft, match.maxWickets - match.wickets)
+            MatchStatus.IN_PROGRESS -> {
+                val wickets = match.maxWickets - match.wickets
+                getString(if (wickets == 1) R.string.need_from_last_wicket else R.string.need_from, match.runsNeeded, match.ballsLeft, wickets)
+            }
         }
     }
 

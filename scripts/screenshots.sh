@@ -20,6 +20,17 @@ shot() {
   capture "$name"
 }
 
+# Waits (up to ~30s) until text "$1" appears on screen.
+wait_for_text() {
+  for _ in $(seq 1 15); do
+    adb shell uiautomator dump /sdcard/ui.xml > /dev/null 2>&1 || true
+    if adb exec-out cat /sdcard/ui.xml | grep -qF "text=\"$1\""; then return 0; fi
+    sleep 1
+  done
+  echo "wait_for_text: '$1' never appeared"
+  return 1
+}
+
 # Taps the on-screen element whose text is exactly "$1" (found via a UI dump).
 tap_text() {
   adb shell uiautomator dump /sdcard/ui.xml > /dev/null

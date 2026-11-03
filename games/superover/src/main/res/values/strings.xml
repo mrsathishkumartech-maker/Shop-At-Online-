@@ -11,6 +11,7 @@
     <string name="bats">Bats</string>
     <string name="match_title">%1$s · Match %2$d/%3$d</string>
     <string name="need_from">Need %1$d from %2$d · %3$d wkts left</string>
+    <string name="need_from_last_wicket">Need %1$d from %2$d · last wicket</string>
     <string name="won_short">Target chased!</string>
     <string name="lost_short">Innings over</string>
     <string name="tap_hint">Tap anywhere when the ball reaches the bat</string>
