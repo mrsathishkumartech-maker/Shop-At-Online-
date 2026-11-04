@@ -11,6 +11,7 @@ name, its own APK and its own release, and all of them share common code from `c
 | Super Over Cricket | `games/superover` | `com.sathishkumar.games.superover` | Playable, 4 tournaments |
 | Kingdom Guard | `games/kingdomguard` | `com.sathishkumar.games.kingdomguard` | Playable, endless waves |
 | Brain Games | `games/braingames` | `com.sathishkumar.games.braingames` | Playable, 4 mini-games |
+| Puzzle Games | `games/puzzlegames` | `com.sathishkumar.games.puzzlegames` | Playable, 4 puzzles, endless levels |
 
 ## Layout
 
@@ -232,3 +233,31 @@ interstitial after every 3rd finished game.
 Tests check that math answers are right (division is always whole) and options are distinct,
 that harder operations unlock with level, and the memory difficulty curve and lives. They also
 cover the colour-clash rate, Number Rush order and penalties, the Brain Score scale, and the streak rules.
+
+## Puzzle Games
+
+Four classic puzzle types in one app, each with endless numbered levels and up to 3 stars a level.
+
+- **Slide Puzzle:** slide the tiles back into order (3×3 for levels 1–8, then 4×4). Tap any tile in
+  the gap's row or column to slide it. Levels are scrambled from the solved board, so they're always
+  solvable. On 3×3, par is the true minimum (found by A*). On 4×4 it's the scramble length.
+- **Lights Out:** tapping a light toggles it and its neighbours, and you turn them all off (3×3 → 4×4
+  → 5×5). Par is the exact fewest taps, worked out by solving the board as equations over GF(2).
+- **Pipe Flow:** rotate pipe pieces until water from the tank reaches every tile with no open ends
+  (3×3 → 6×6). Levels are a random tree of pipes with each piece turned at random. Par is the fewest
+  turns.
+- **Mini Sudoku:** 6×6 with 2×3 boxes, and fewer clues as levels rise (21 down to about 12). Every
+  puzzle is checked to have exactly one solution. Wrong numbers aren't placed and count as mistakes.
+
+Stars: at or under par = 3, up to 50% over = 2, otherwise 1 (Sudoku: 0 mistakes = 3, 1–2 = 2).
+
+**Ads:** a rewarded **Hint** in every puzzle, and an interstitial after every 3rd solved level.
+Each hint makes one helpful move:
+- **Slide:** follows a planned solution.
+- **Lights Out:** presses a light in the shortest solution.
+- **Pipe Flow:** fixes one wrongly turned piece.
+- **Sudoku:** fills the selected cell.
+
+Tests check that levels of every type can be solved, that repeated hints always finish a puzzle,
+that the Lights Out par is optimal, that Sudoku solutions are unique, and that levels are
+deterministic.

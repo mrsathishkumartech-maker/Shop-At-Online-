@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Puzzle Games</string>
+    <string name="tagline">Four classic puzzles, endless levels.</string>
+    <string name="total_stars">⭐ %1$d stars collected</string>
+    <string name="level_stars">Level %1$d\n⭐ %2$d</string>
+    <string name="puzzle_level">%1$s · Level %2$d</string>
+    <string name="moves_par">Moves %1$d · par %2$d</string>
+    <string name="moves_n">Moves %1$d</string>
+    <string name="mistakes_n">Mistakes %1$d</string>
+    <string name="hint">Hint ▶</string>
+    <string name="restart">Restart</string>
+    <string name="solved_title">Level %1$d solved!</string>
+    <string name="solved_moves">%1$d moves (par %2$d)</string>
+    <string name="solved_mistakes">%1$d mistakes</string>
+    <string name="stars_gained">+%1$d ⭐</string>
+    <string name="next_level">Next level</string>
+    <string name="home">Home</string>
+    <string name="ad_unavailable">No ad available right now. Try again in a moment.</string>
+</resources>
