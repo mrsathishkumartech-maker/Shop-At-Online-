@@ -21,6 +21,7 @@ class RushActivity : Activity() {
     private lateinit var grid: TileGridView
     private lateinit var status: TextView
     private lateinit var clock: TextView
+    /** 0 until the first correct tap: the clock starts when the player does. */
     private var startedAt = 0L
     private var pausedElapsed = -1L
     private var done = false
@@ -49,28 +50,29 @@ class RushActivity : Activity() {
     override fun onPause() {
         super.onPause()
         handler.removeCallbacks(ticker)
-        if (!done) pausedElapsed = elapsed()
+        if (!done && startedAt > 0) pausedElapsed = elapsed()
     }
 
     override fun onResume() {
         super.onResume()
-        if (!done && pausedElapsed >= 0) {
+        if (!done && startedAt > 0 && pausedElapsed >= 0) {
             startedAt = SystemClock.elapsedRealtime() - pausedElapsed
             pausedElapsed = -1
             handler.post(ticker)
         }
     }
 
-    private fun elapsed() = SystemClock.elapsedRealtime() - startedAt
+    private fun elapsed() = if (startedAt == 0L) 0L else SystemClock.elapsedRealtime() - startedAt
 
     private fun start() {
         game = NumberRush()
         done = false
-        startedAt = SystemClock.elapsedRealtime()
+        startedAt = 0L
+        pausedElapsed = -1
         grid.enabledForInput = true
         draw()
         handler.removeCallbacks(ticker)
-        handler.post(ticker)
+        clock.text = "0.0 s"
     }
 
     private fun draw(wrong: Int? = null) {
@@ -88,6 +90,10 @@ class RushActivity : Activity() {
 
     private fun onTap(i: Int) {
         if (game.tap(i)) {
+            if (startedAt == 0L) {
+                startedAt = SystemClock.elapsedRealtime()
+                handler.post(ticker)
+            }
             Haptics.tap(grid)
             draw()
             if (game.isDone) finishGame()

@@ -223,7 +223,8 @@ out of 1000. Playing on consecutive days builds a 🔥 streak.
   adds a tile, and the grid grows from 3×3 to 6×6. You have 3 lives.
 - **Color Clash** (focus, 45 s): a colour word printed in a different ink. Tap the ink colour,
   not the word. 75% of cards clash, and streaks score extra.
-- **Number Rush** (attention): tap 1–25 in order on a shuffled 5×5 grid. Each wrong tap adds 2 s.
+- **Number Rush** (attention): tap 1–25 in order on a shuffled 5×5 grid. The clock starts on your
+  first correct tap, and each wrong tap adds 2 s.
 
 **Ads:** a rewarded **continue** in Memory Grid (one more life, once per game), and an
 interstitial after every 3rd finished game.
