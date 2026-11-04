@@ -10,6 +10,7 @@ name, its own APK and its own release, and all of them share common code from `c
 | Chai Stall Tycoon | `games/chaistall` | `com.sathishkumar.games.chaistall` | Playable idle game |
 | Super Over Cricket | `games/superover` | `com.sathishkumar.games.superover` | Playable, 4 tournaments |
 | Kingdom Guard | `games/kingdomguard` | `com.sathishkumar.games.kingdomguard` | Playable, endless waves |
+| Brain Games | `games/braingames` | `com.sathishkumar.games.braingames` | Playable, 4 mini-games |
 
 ## Layout
 
@@ -210,3 +211,23 @@ It's built to practise what a bigger strategy game needs:
 **Ads** (your plan didn't list any for this game, so these are a suggestion): a rewarded
 **Rebuild walls** (revive the castle with half its lives, once per run) and an interstitial
 after a run ends, from the 3rd run on.
+
+## Brain Games
+
+Four quick brain-training games, each scored out of 250, which add up to a daily **Brain Score**
+out of 1000. Playing on consecutive days builds a 🔥 streak.
+
+- **Quick Math** (speed, 60 s): pick the right answer out of four. Each right answer raises the
+  level: bigger numbers, then ×, then ÷. A wrong answer drops it a step.
+- **Memory Grid** (memory): tiles light up, then go dark; tap the ones that were lit. Each round
+  adds a tile, and the grid grows from 3×3 to 6×6. You have 3 lives.
+- **Color Clash** (focus, 45 s): a colour word printed in a different ink. Tap the ink colour,
+  not the word. 75% of cards clash, and streaks score extra.
+- **Number Rush** (attention): tap 1–25 in order on a shuffled 5×5 grid. Each wrong tap adds 2 s.
+
+**Ads:** a rewarded **continue** in Memory Grid (one more life, once per game), and an
+interstitial after every 3rd finished game.
+
+Tests check that math answers are right (division is always whole) and options are distinct,
+that harder operations unlock with level, and the memory difficulty curve and lives. They also
+cover the colour-clash rate, Number Rush order and penalties, the Brain Score scale, and the streak rules.

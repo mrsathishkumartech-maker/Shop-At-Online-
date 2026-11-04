@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Brain Games</string>
+    <string name="tagline">Four quick games. One Brain Score a day.</string>
+    <string name="streak_n">🔥 %1$d-day streak</string>
+    <string name="streak_start">Play a game to start a streak</string>
+    <string name="game_detail">%1$s · best %2$s</string>
+    <string name="points_of">%1$d/%2$d</string>
+    <string name="score_n">Score %1$d</string>
+    <string name="math_instructions">Pick the right answer. Faster levels score more.</string>
+    <string name="clash_instructions">Tap the colour of the INK, not the word.</string>
+    <string name="memory_instructions">Remember the lit tiles, then tap them.</string>
+    <string name="rush_instructions">Tap 1 to 25 in order, as fast as you can.</string>
+    <string name="memory_watch">Round %1$d · remember %2$d tiles…</string>
+    <string name="memory_tap">Your turn: %1$d of %2$d</string>
+    <string name="memory_cleared">Perfect!</string>
+    <string name="memory_wrong">Not that one. New pattern…</string>
+    <string name="memory_out_title">Out of lives</string>
+    <string name="memory_out_message">You remembered %1$d tiles. Watch an ad for one more life?</string>
+    <string name="continue_ad">Continue ▶</string>
+    <string name="see_result">See result</string>
+    <string name="memory_detail">Rounds cleared: %1$d · tiles remembered: %2$d</string>
+    <string name="math_detail">%1$d right, %2$d wrong</string>
+    <string name="clash_detail">%1$d right, %2$d wrong</string>
+    <string name="rush_next">Find %1$d</string>
+    <string name="rush_done">Done!</string>
+    <string name="rush_detail">Time %1$.1f s with %2$d mistakes (+2 s each)</string>
+    <string name="result_title">%1$s: %2$s</string>
+    <string name="result_points">+%1$d of %2$d Brain points</string>
+    <string name="result_best">Your best: %1$s</string>
+    <string name="new_best">🎉 New personal best!</string>
+    <string name="brain_score_today">Brain Score today: %1$d</string>
+    <string name="play_again">Play again</string>
+    <string name="home">Home</string>
+    <string name="ad_unavailable">No ad available right now. Try again in a moment.</string>
+</resources>
