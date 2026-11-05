@@ -12,6 +12,7 @@ name, its own APK and its own release, and all of them share common code from `c
 | Kingdom Guard | `games/kingdomguard` | `com.sathishkumar.games.kingdomguard` | Playable, endless waves |
 | Brain Games | `games/braingames` | `com.sathishkumar.games.braingames` | Playable, 4 mini-games |
 | Puzzle Games | `games/puzzlegames` | `com.sathishkumar.games.puzzlegames` | Playable, 4 puzzles, endless levels |
+| Word Games | `games/wordgames` | `com.sathishkumar.games.wordgames` | Playable, 4 word games |
 
 ## Layout
 
@@ -261,3 +262,26 @@ Each hint makes one helpful move:
 Tests check that levels of every type can be solved, that repeated hints always finish a puzzle,
 that the Lights Out par is optimal, that Sudoku solutions are unique, and that levels are
 deterministic.
+
+## Word Games
+
+Four word games on a real English dictionary.
+
+- **Anagram Rush:** 60 seconds to unscramble as many words as you can. Any real word that uses all
+  the letters counts, and words get longer as you go.
+- **Word Builder:** make words of 3+ letters from a 6- or 7-letter word. Find about 40% of the
+  possible words (5–20) to clear the level.
+- **Word Ladder:** change one letter at a time to get from one word to another, with every step a
+  real word. Par is the shortest route, found by breadth-first search over the dictionary,
+  e.g. `woods → foods → foots → boots → blots → blows → glows`.
+- **Word Search:** swipe to find hidden words. Levels add diagonals, then backwards words.
+
+**Word lists:** `games/wordgames/tools/build_wordlists.py` builds them from the `wordlist-english`
+npm package (MIT), which comes from **SCOWL**. Players may enter any word from SCOWL sizes 10–35
+(about 24,000 words of 3–8 letters). Answers and puzzles only use the commonest words, sizes 10–20
+(about 7,500), minus a blocklist of offensive words. SCOWL's copyright and permission notice is in
+`games/wordgames/THIRD_PARTY_NOTICES-SCOWL.txt`, and inside the app under **Word list credits**,
+as its license requires.
+
+**Ads:** a rewarded **Hint** in every game (reveal a letter, give a word, take the next ladder step,
+or point at a hidden word), and an interstitial after every 3rd level or round.

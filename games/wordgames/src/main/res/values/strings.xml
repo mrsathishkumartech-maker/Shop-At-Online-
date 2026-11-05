@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Word Games</string>
+    <string name="tagline">Four word games, endless levels.</string>
+    <string name="best_n">Best %1$d</string>
+    <string name="level_stars">Level %1$d\n⭐ %2$d</string>
+    <string name="credits">Word list credits</string>
+    <string name="credits_title">Word list</string>
+    <string name="credits_intro">Word lists are from SCOWL (via the wordlist-english package, MIT), used under the notice below.</string>
+    <string name="loading">Loading…</string>
+    <string name="tap_letters">Tap the letters</string>
+    <string name="skip">Skip</string>
+    <string name="undo">Undo</string>
+    <string name="shuffle">Shuffle</string>
+    <string name="enter">Enter</string>
+    <string name="hint">Hint ▶</string>
+    <string name="backspace">⌫</string>
+    <string name="level_title">%1$s · Level %2$d</string>
+    <string name="anagram_status">Score %1$d · %2$d solved</string>
+    <string name="anagram_info">Use all %1$d letters</string>
+    <string name="starts_with">Starts with %1$s</string>
+    <string name="builder_status">Found %1$d of %2$d needed (%3$d possible)</string>
+    <string name="builder_info">Make words of 3+ letters</string>
+    <string name="ladder_status">Goal: %1$s · steps %2$d · par %3$d</string>
+    <string name="search_status">Found %1$d of %2$d</string>
+    <string name="not_it">Not a word, try again</string>
+    <string name="already_found">Already found</string>
+    <string name="not_in_list">Not in the word list</string>
+    <string name="too_short">At least 3 letters</string>
+    <string name="one_letter">Change exactly one letter</string>
+    <string name="not_a_word">Not a word</string>
+    <string name="already_used">Already in your ladder</string>
+    <string name="no_hint">That\'s all the help for this word</string>
+    <string name="hint_word">Found for you: %1$s</string>
+    <string name="level_done">Level %1$d done!</string>
+    <string name="ladder_done">%1$d steps (par %2$d)</string>
+    <string name="builder_done">%1$d of %2$d words found</string>
+    <string name="stars_gained">+%1$d ⭐</string>
+    <string name="next_level">Next level</string>
+    <string name="home">Home</string>
+    <string name="play_again">Play again</string>
+    <string name="anagram_score">Time\'s up: %1$d points</string>
+    <string name="anagram_done">%1$d words solved. The last one was %2$s.</string>
+    <string name="new_best">🎉 New best!</string>
+    <string name="ad_unavailable">No ad available right now. Try again in a moment.</string>
+</resources>

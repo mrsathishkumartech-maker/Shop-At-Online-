@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.WordGames" parent="android:Theme.Material.NoActionBar">
+        <item name="android:colorPrimary">@color/background</item>
+        <item name="android:colorPrimaryDark">@color/background</item>
+        <item name="android:colorAccent">@color/accent</item>
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:statusBarColor">@color/background</item>
+        <item name="android:navigationBarColor">@color/background</item>
+    </style>
+
+    <style name="AnswerButton" parent="android:Widget.Material.Button.Borderless">
+        <item name="android:background">@drawable/bg_button</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/text</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_margin">6dp</item>
+        <item name="android:minHeight">88dp</item>
+    </style>
+    <style name="ActionButton" parent="AnswerButton">
+        <item name="android:textSize">17sp</item>
+        <item name="android:minHeight">52dp</item>
+    </style>
+
+    <style name="NumberButton" parent="AnswerButton">
+        <item name="android:textSize">22sp</item>
+        <item name="android:minHeight">56dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:layout_margin">3dp</item>
+    </style>
+</resources>
