@@ -303,7 +303,11 @@ class WordActivity : Activity() {
             typedText.isEmpty() -> getString(R.string.tap_letters)
             else -> typedText.toString().uppercase()
         }
-        entry.setTextColor(if (typedText.isEmpty()) Color.parseColor("#A9B4D0") else Color.WHITE)
+        val placeholder = typedText.isEmpty() && (a == null || a.revealed == 0)
+        entry.setTextColor(if (placeholder) Color.parseColor("#A9B4D0") else Color.WHITE)
+        // Spread out typed letters like tiles; keep the prompt as normal text.
+        entry.letterSpacing = if (placeholder) 0f else 0.15f
+        entry.textSize = if (placeholder) 20f else 32f
     }
 
     private fun render() {
